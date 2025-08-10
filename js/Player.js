@@ -202,6 +202,13 @@ class Player extends Entity {
         }
 
         this.handleMovement(deltaTime);
+
+        // Update facing direction based on mouse position so the player aims correctly
+        if (this.mouseX !== undefined && this.mouseY !== undefined) {
+            const worldMouseX = this.mouseX + game.camera.x;
+            this.facingRight = worldMouseX >= this.x + this.width / 2;
+        }
+
         this.handleShooting(deltaTime, game);
         this.updateAnimation();
         
@@ -259,19 +266,24 @@ class Player extends Entity {
     }
 
     shoot(game) {
-        // Position bullet at the player's gun/center
-        const bulletX = this.x + this.width / 2;
-        const bulletY = this.y + this.height / 2;
-        
+        // Base position from the player's center
+        const originX = this.x + this.width / 2;
+        const originY = this.y + this.height / 2;
+
         let angle = this.facingRight ? 0 : Math.PI;
-        
+
         if (this.mouseX !== undefined && this.mouseY !== undefined) {
             const camera = game.camera;
             const worldMouseX = this.mouseX + camera.x;
             const worldMouseY = this.mouseY + camera.y;
-            angle = Math.atan2(worldMouseY - bulletY, worldMouseX - bulletX);
+            angle = Math.atan2(worldMouseY - originY, worldMouseX - originX);
         }
-        
+
+        // Offset bullet so it spawns at the muzzle of the gun
+        const offset = 32;
+        const bulletX = originX + Math.cos(angle) * offset;
+        const bulletY = originY + Math.sin(angle) * offset;
+
         const bullet = new Bullet(bulletX, bulletY, angle, this.team, this.assetLoader);
         game.bullets.push(bullet);
 
@@ -280,7 +292,8 @@ class Player extends Entity {
             bulletY,
             'muzzle',
             this.assetLoader,
-            5
+            5,
+            angle
         );
         game.particles.push(muzzleFlash);
     }
