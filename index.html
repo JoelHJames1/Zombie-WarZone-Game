@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Warzone Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="character-selection" class="screen active">
+            <h1>2D WARZONE</h1>
+            <h2>Select Your Hero</h2>
+            <div class="hero-grid">
+                <div class="hero-card" data-hero="hero1">
+                    <img src="HEROES/sequence/hero1/idle.png" alt="Hero 1">
+                    <h3>Hero Alpha</h3>
+                    <p>Elite soldier</p>
+                </div>
+                <div class="hero-card" data-hero="Soldier1">
+                    <img src="Soldier1/Idle__000.png" alt="Soldier 1">
+                    <h3>Soldier Alpha</h3>
+                    <p>Balanced fighter</p>
+                </div>
+                <div class="hero-card" data-hero="Soldier2">
+                    <img src="Soldier2/Idle__000.png" alt="Soldier 2">
+                    <h3>Soldier Beta</h3>
+                    <p>Heavy weapons</p>
+                </div>
+                <div class="hero-card" data-hero="Soldier3">
+                    <img src="Soldier3/Idle__000.png" alt="Soldier 3">
+                    <h3>Soldier Gamma</h3>
+                    <p>Fast & agile</p>
+                </div>
+                <div class="hero-card" data-hero="Soldier4">
+                    <img src="Soldier4/Idle__000.png" alt="Soldier 4">
+                    <h3>Soldier Delta</h3>
+                    <p>Tactical expert</p>
+                </div>
+            </div>
+            <button id="start-game" disabled>START GAME</button>
+        </div>
+        
+        <div id="game-screen" class="screen">
+            <div id="game-ui">
+                <div class="ui-top">
+                    <div class="health-bar">
+                        <div class="health-label">HEALTH</div>
+                        <div class="health-container">
+                            <div class="health-background"></div>
+                            <div class="health-fill" id="player-health"></div>
+                        </div>
+                    </div>
+                    <div class="score">
+                        <span>SCORE: </span><span id="score-value">0</span>
+                    </div>
+                    <div class="wave">
+                        <span>WAVE: </span><span id="wave-value">1</span>
+                    </div>
+                </div>
+            </div>
+            <canvas id="game-canvas"></canvas>
+        </div>
+        
+        <div id="loading-screen" class="screen">
+            <h1>2D WARZONE</h1>
+            <div class="loading-container">
+                <div class="loading-bar">
+                    <div class="loading-progress" id="loading-progress"></div>
+                </div>
+                <p id="loading-text">Loading assets...</p>
+            </div>
+        </div>
+
+        <div id="game-over" class="screen">
+            <h1>GAME OVER</h1>
+            <p class="final-score">Final Score: <span id="final-score">0</span></p>
+            <p class="final-wave">Waves Survived: <span id="final-wave">0</span></p>
+            <button id="restart-game">PLAY AGAIN</button>
+        </div>
+    </div>
+    
+    <script src="js/AssetLoader.js"></script>
+    <script src="js/Animation.js"></script>
+    <script src="js/Entity.js"></script>
+    <script src="js/Player.js"></script>
+    <script src="js/Enemy.js"></script>
+    <script src="js/Zombie.js"></script>
+    <script src="js/Bullet.js"></script>
+    <script src="js/Particle.js"></script>
+    <script src="js/Game.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
