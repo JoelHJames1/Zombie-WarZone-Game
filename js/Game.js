@@ -142,8 +142,65 @@ class Game {
             { key: 'Zombie3_Run_0', src: 'Zombies/Zombie3/animation/Run1.png' },
             { key: 'Zombie3_Attack_0', src: 'Zombies/Zombie3/animation/Attack1.png' },
             
-            // Basic effects
-            { key: 'bullet', src: 'HEROES/Bullet.png' }
+            // Bullet and muzzle effects from sequence folder
+            { key: 'bullet1_1', src: 'HEROES/sequence/bullet/Bullet1 (1).png' },
+            { key: 'bullet1_2', src: 'HEROES/sequence/bullet/Bullet1 (2).png' },
+            { key: 'bullet1_3', src: 'HEROES/sequence/bullet/Bullet1 (3).png' },
+            { key: 'bullet1_4', src: 'HEROES/sequence/bullet/Bullet1 (4).png' },
+            { key: 'bullet2_1', src: 'HEROES/sequence/bullet/bullet2 (1).png' },
+            { key: 'bullet2_2', src: 'HEROES/sequence/bullet/bullet2 (2).png' },
+            { key: 'bullet2_3', src: 'HEROES/sequence/bullet/bullet2 (3).png' },
+            { key: 'bullet2_4', src: 'HEROES/sequence/bullet/bullet2 (4).png' },
+            { key: 'bullet3_1', src: 'HEROES/sequence/bullet/Bullet3 (1).png' },
+            { key: 'bullet3_2', src: 'HEROES/sequence/bullet/Bullet3 (2).png' },
+            { key: 'bullet3_3', src: 'HEROES/sequence/bullet/Bullet3 (3).png' },
+            { key: 'bullet3_4', src: 'HEROES/sequence/bullet/Bullet3 (4).png' },
+            { key: 'muzzle_1', src: 'HEROES/sequence/bullet/muzzle (1).png' },
+            { key: 'muzzle_2', src: 'HEROES/sequence/bullet/muzzle (2).png' },
+            { key: 'muzzle_3', src: 'HEROES/sequence/bullet/muzzle (3).png' },
+            { key: 'muzzle_4', src: 'HEROES/sequence/bullet/muzzle (4).png' },
+            { key: 'muzzle_5', src: 'HEROES/sequence/bullet/muzzle (5).png' },
+            
+            // BADGUY assets
+            // BADGUY_A assets
+            { key: 'BADGUY_A_run_1', src: 'BADGUY_A/png/Run/badguy_A_run_1.png' },
+            { key: 'BADGUY_A_run_2', src: 'BADGUY_A/png/Run/badguy_A_run_2.png' },
+            { key: 'BADGUY_A_run_3', src: 'BADGUY_A/png/Run/badguy_A_run_3.png' },
+            { key: 'BADGUY_A_run_4', src: 'BADGUY_A/png/Run/badguy_A_run_4.png' },
+            { key: 'BADGUY_A_shoot_1', src: 'BADGUY_A/png/Shoot/badguy_A_shoot_1.png' },
+            { key: 'BADGUY_A_shoot_2', src: 'BADGUY_A/png/Shoot/badguy_A_shoot_2.png' },
+            { key: 'BADGUY_A_death_1', src: 'BADGUY_A/png/Death/badguy_A_death_1.png.png' },
+            { key: 'BADGUY_A_death_2', src: 'BADGUY_A/png/Death/badguy_A_death_2.png' },
+            { key: 'BADGUY_A_death_3', src: 'BADGUY_A/png/Death/badguy_A_death_3.png' },
+            { key: 'BADGUY_A_hurt_1', src: 'BADGUY_A/png/Hurt/badguy_A_hurt_1.png' },
+            { key: 'BADGUY_A_hurt_2', src: 'BADGUY_A/png/Hurt/badguy_A_hurt_2.png' },
+            { key: 'BADGUY_A_jump_1', src: 'BADGUY_A/png/Jump/badguy_A_jump_1.png' },
+            
+            // BADGUY_B assets
+            { key: 'BADGUY_B_run_1', src: 'BADGUY_B/png/Run/badguy_B_run_1.png' },
+            { key: 'BADGUY_B_run_2', src: 'BADGUY_B/png/Run/badguy_B_run_2.png' },
+            { key: 'BADGUY_B_run_3', src: 'BADGUY_B/png/Run/badguy_B_run_3.png' },
+            { key: 'BADGUY_B_run_4', src: 'BADGUY_B/png/Run/badguy_B_run_4.png' },
+            { key: 'BADGUY_B_shoot_1', src: 'BADGUY_B/png/Shoot/badguy_B_shoot_1.png' },
+            { key: 'BADGUY_B_shoot_2', src: 'BADGUY_B/png/Shoot/badguy_B_shoot_2.png' },
+            { key: 'BADGUY_B_death_1', src: 'BADGUY_B/png/Death/badguy_B_death_1.png' },
+            { key: 'BADGUY_B_death_2', src: 'BADGUY_B/png/Death/badguy_B_death_2.png' },
+            { key: 'BADGUY_B_death_3', src: 'BADGUY_B/png/Death/badguy_B_death_3.png' },
+            { key: 'BADGUY_B_hurt_1', src: 'BADGUY_B/png/Hurt/badguy_B_hurt_1.png' },
+            { key: 'BADGUY_B_hurt_2', src: 'BADGUY_B/png/Hurt/badguy_B_hurt_2.png' },
+            
+            // BADGUY_C assets
+            { key: 'BADGUY_C_run_1', src: 'BADGUY_C/png/Run/badguy_C_run_1.png' },
+            { key: 'BADGUY_C_run_2', src: 'BADGUY_C/png/Run/badguy_C_run_2.png' },
+            { key: 'BADGUY_C_run_3', src: 'BADGUY_C/png/Run/badguy_C_run_3.png' },
+            { key: 'BADGUY_C_run_4', src: 'BADGUY_C/png/Run/badguy_C_run_4.png' },
+            { key: 'BADGUY_C_shoot_1', src: 'BADGUY_C/png/Shoot/badguy_C_shoot_1.png' },
+            { key: 'BADGUY_C_shoot_2', src: 'BADGUY_C/png/Shoot/badguy_C_shoot_2.png' },
+            { key: 'BADGUY_C_death_1', src: 'BADGUY_C/png/Death/badguy_C_death_1.png' },
+            { key: 'BADGUY_C_death_2', src: 'BADGUY_C/png/Death/badguy_C_death_2.png' },
+            { key: 'BADGUY_C_death_3', src: 'BADGUY_C/png/Death/badguy_C_death_3.png' },
+            { key: 'BADGUY_C_hurt_1', src: 'BADGUY_C/png/Hurt/badguy_C_hurt_1.png' },
+            { key: 'BADGUY_C_hurt_2', src: 'BADGUY_C/png/Hurt/badguy_C_hurt_2.png' }
         ];
         
         const progressBar = document.getElementById('loading-progress');
@@ -237,7 +294,7 @@ class Game {
     }
 
     spawnWave() {
-        const enemyTypes = ['Soldier1', 'Soldier2', 'Soldier3', 'Soldier4'];
+        const enemyTypes = ['Soldier1', 'Soldier2', 'Soldier3', 'Soldier4', 'BADGUY_A', 'BADGUY_B', 'BADGUY_C'];
         const zombieTypes = ['Zombie01', 'Zombie02', 'Zombie3'];
         
         // Calculate enemies for this wave with progressive difficulty

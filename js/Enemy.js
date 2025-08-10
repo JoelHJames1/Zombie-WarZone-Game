@@ -24,6 +24,14 @@ class Enemy extends Entity {
     }
 
     setupAnimations() {
+        if (this.enemyType.startsWith('BADGUY_')) {
+            this.setupBadGuyAnimations();
+        } else {
+            this.setupSoldierAnimations();
+        }
+    }
+
+    setupSoldierAnimations() {
         const animations = {
             idle: { name: 'Idle', frameCount: 2 },
             run: { name: 'Run', frameCount: 2 },
@@ -33,7 +41,7 @@ class Enemy extends Entity {
             jump: { name: 'Idle', frameCount: 1 }
         };
 
-        console.log(`Setting up enemy animations for ${this.enemyType}`);
+        console.log(`Setting up soldier animations for ${this.enemyType}`);
 
         Object.keys(animations).forEach(animKey => {
             const anim = animations[animKey];
@@ -55,6 +63,47 @@ class Enemy extends Entity {
                 console.log(`✅ Added enemy ${animKey} animation with ${frames.length} frames for ${this.enemyType}`);
             } else {
                 console.warn(`❌ No frames found for enemy ${animKey} animation for ${this.enemyType}`);
+            }
+        });
+
+        this.animationManager.play('idle');
+    }
+
+    setupBadGuyAnimations() {
+        const animations = {
+            idle: { name: 'run', frameCount: 4 }, // Use run frames for idle
+            run: { name: 'run', frameCount: 4 },
+            shoot: { name: 'shoot', frameCount: 2 },
+            death: { name: 'death', frameCount: 3 },
+            hurt: { name: 'hurt', frameCount: 2 },
+            jump: { name: 'jump', frameCount: 1 }
+        };
+
+        console.log(`Setting up BADGUY animations for ${this.enemyType}`);
+
+        Object.keys(animations).forEach(animKey => {
+            const anim = animations[animKey];
+            const frames = [];
+            
+            for (let i = 1; i <= anim.frameCount; i++) {
+                const assetKey = `${this.enemyType}_${anim.name}_${i}`;
+                console.log(`Looking for BADGUY asset: ${assetKey}`);
+                const img = this.assetLoader.get(assetKey);
+                if (img) {
+                    frames.push(img);
+                    console.log(`✅ Found BADGUY frame ${i} for ${animKey}`);
+                } else {
+                    console.log(`❌ Missing BADGUY frame ${i} for ${animKey}`);
+                }
+            }
+
+            if (frames.length > 0) {
+                const loop = animKey !== 'death' && animKey !== 'hurt';
+                const frameRate = animKey === 'run' ? 12 : 8;
+                this.animationManager.addAnimation(animKey, new Animation(frames, frameRate, loop));
+                console.log(`✅ Added BADGUY ${animKey} animation with ${frames.length} frames for ${this.enemyType}`);
+            } else {
+                console.warn(`❌ No frames found for BADGUY ${animKey} animation for ${this.enemyType}`);
             }
         });
 

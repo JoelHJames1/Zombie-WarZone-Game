@@ -16,7 +16,22 @@ class Bullet {
         this.vx = Math.cos(angle) * this.speed;
         this.vy = Math.sin(angle) * this.speed;
         
-        this.sprite = assetLoader.get('bullet');
+        // Set up animated bullet sprites
+        this.bulletFrames = [];
+        this.bulletType = Math.floor(Math.random() * 3) + 1; // Random bullet type (1, 2, or 3)
+        
+        for (let i = 1; i <= 4; i++) {
+            let bulletKey = `bullet${this.bulletType}_${i}`;
+            let frame = assetLoader.get(bulletKey);
+            if (frame) {
+                this.bulletFrames.push(frame);
+            }
+        }
+        
+        this.currentFrame = 0;
+        this.frameTimer = 0;
+        this.frameDuration = 100; // 100ms per frame
+        
         this.trail = [];
         this.maxTrailLength = 5;
     }
@@ -25,6 +40,13 @@ class Bullet {
         if (!this.alive) return;
         
         const dt = deltaTime / 1000;
+        
+        // Update bullet animation
+        this.frameTimer += deltaTime;
+        if (this.frameTimer >= this.frameDuration) {
+            this.frameTimer = 0;
+            this.currentFrame = (this.currentFrame + 1) % this.bulletFrames.length;
+        }
         
         this.trail.push({ x: this.x, y: this.y, alpha: 1 });
         if (this.trail.length > this.maxTrailLength) {
@@ -136,9 +158,11 @@ class Bullet {
         ctx.translate(screenX, screenY);
         ctx.rotate(this.angle);
         
-        if (this.sprite) {
-            ctx.drawImage(this.sprite, -this.width/2, -this.height/2, this.width, this.height);
+        if (this.bulletFrames.length > 0) {
+            const currentSprite = this.bulletFrames[this.currentFrame];
+            ctx.drawImage(currentSprite, -this.width/2, -this.height/2, this.width, this.height);
         } else {
+            // Fallback rendering if no sprites loaded
             ctx.fillStyle = '#ffcc00';
             ctx.fillRect(-this.width/2, -this.height/2, this.width, this.height);
         }
