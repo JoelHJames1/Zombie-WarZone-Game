@@ -1,10 +1,11 @@
 class Particle {
-    constructor(x, y, type, assetLoader, frameCount = 20) {
+    constructor(x, y, type, assetLoader, frameCount = 20, angle = 0) {
         this.x = x;
         this.y = y;
         this.type = type;
         this.assetLoader = assetLoader;
         this.alive = true;
+        this.angle = angle;
         
         if (type === 'explosion') {
             this.frames = [];
@@ -88,23 +89,24 @@ class Particle {
         if (this.animation) {
             const frame = this.animation.getCurrentFrame();
             if (frame) {
-                ctx.drawImage(frame, 
-                    screenX - this.width/2, 
-                    screenY - this.height/2, 
-                    this.width, 
-                    this.height
-                );
+                ctx.save();
+                ctx.translate(screenX, screenY);
+                if (this.angle) {
+                    ctx.rotate(this.angle);
+                }
+                ctx.drawImage(frame, -this.width/2, -this.height/2, this.width, this.height);
+                ctx.restore();
             }
         } else {
             ctx.save();
-            
+
             if (this.lifetime) {
                 ctx.globalAlpha = Math.max(0, this.lifetime / 500);
             }
-            
+
             ctx.fillStyle = this.color || '#fff';
             ctx.fillRect(screenX - this.width/2, screenY - this.height/2, this.width, this.height);
-            
+
             ctx.restore();
         }
     }

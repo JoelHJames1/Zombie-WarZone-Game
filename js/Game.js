@@ -24,9 +24,9 @@ class Game {
         this.waveTimer = 0;
         this.waveDelay = 3000;
         this.baseEnemiesPerWave = 3;
-        this.baseZombiesPerWave = 6;
+        this.baseZombiesPerWave = 10;
         this.maxEnemiesPerWave = 10;
-        this.maxZombiesPerWave = 20;
+        this.maxZombiesPerWave = 30;
         
         this.gameState = 'menu';
         this.selectedHero = null;
